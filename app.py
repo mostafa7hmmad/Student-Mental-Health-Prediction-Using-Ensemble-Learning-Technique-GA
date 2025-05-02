@@ -64,7 +64,7 @@ if st.button('Predict Depression Risk'):
         ann_pred = (models['ann'].predict(features) > 0.5).astype(int)[0][0]
 
         # Collect votes
-        votes = [lr_pred, nb_pred, rf_pred, svm_pred, ann_pred]
+        votes = [lr_pred, svm_pred, ann_pred]
         prediction = 1 if sum(votes) >= 3 else 0  # Majority voting
 
         # Display results
