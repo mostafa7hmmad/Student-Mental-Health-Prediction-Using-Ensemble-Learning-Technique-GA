@@ -8,8 +8,6 @@ from tensorflow.keras.models import load_model
 def load_models():
     models = {
         'lr': joblib.load('Models/best_lr_model.pkl'),
-        # 'nb': joblib.load('Models/best_nb_model.pkl'),
-        # 'rf': joblib.load('Models/best_rf_model.pkl'),
         'svm': joblib.load('Models/best_svm_model.pkl'),
         'ann': load_model('Models/optimized_ann_model.h5')
     }
@@ -62,8 +60,6 @@ if st.button('Predict Depression Risk'):
     try:
         # Get predictions from all models
         lr_pred = models['lr'].predict(features)[0]
-        nb_pred = models['nb'].predict(features)[0]
-        rf_pred = models['rf'].predict(features)[0]
         svm_pred = models['svm'].predict(features)[0]
         ann_pred = (models['ann'].predict(features) > 0.5).astype(int)[0][0]
 
@@ -77,8 +73,6 @@ if st.button('Predict Depression Risk'):
         
         results = {
             'Logistic Regression': 'At Risk' if lr_pred == 1 else 'No Risk',
-            'Naive Bayes': 'At Risk' if nb_pred == 1 else 'No Risk',
-            'Random Forest': 'At Risk' if rf_pred == 1 else 'No Risk',
             'SVM': 'At Risk' if svm_pred == 1 else 'No Risk',
             'Neural Network': 'At Risk' if ann_pred == 1 else 'No Risk'
         }
