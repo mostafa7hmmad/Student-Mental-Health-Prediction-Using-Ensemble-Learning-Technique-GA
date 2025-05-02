@@ -8,8 +8,8 @@ from tensorflow.keras.models import load_model
 def load_models():
     models = {
         'lr': joblib.load('Models/best_lr_model.pkl'),
-        'nb': joblib.load('Models/best_nb_model.pkl'),
-        'rf': joblib.load('Models/best_rf_model.pkl'),
+        # 'nb': joblib.load('Models/best_nb_model.pkl'),
+        # 'rf': joblib.load('Models/best_rf_model.pkl'),
         'svm': joblib.load('Models/best_svm_model.pkl'),
         'ann': load_model('Models/optimized_ann_model.h5')
     }
